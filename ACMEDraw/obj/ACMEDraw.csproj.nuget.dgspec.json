@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kis_b\\source\\repos\\ACMEDraw\\ACMEDraw\\ACMEDraw.csproj": {}
+    "C:\\Users\\kis_b\\source\\repos\\ACMEdraw\\ACMEdraw\\ACMEdraw.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kis_b\\source\\repos\\ACMEDraw\\ACMEDraw\\ACMEDraw.csproj": {
+    "C:\\Users\\kis_b\\source\\repos\\ACMEdraw\\ACMEdraw\\ACMEdraw.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kis_b\\source\\repos\\ACMEDraw\\ACMEDraw\\ACMEDraw.csproj",
-        "projectName": "ACMEDraw",
-        "projectPath": "C:\\Users\\kis_b\\source\\repos\\ACMEDraw\\ACMEDraw\\ACMEDraw.csproj",
+        "projectUniqueName": "C:\\Users\\kis_b\\source\\repos\\ACMEdraw\\ACMEdraw\\ACMEdraw.csproj",
+        "projectName": "ACMEdraw",
+        "projectPath": "C:\\Users\\kis_b\\source\\repos\\ACMEdraw\\ACMEdraw\\ACMEdraw.csproj",
         "packagesPath": "C:\\Users\\kis_b\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kis_b\\source\\repos\\ACMEDraw\\ACMEDraw\\obj\\",
+        "outputPath": "C:\\Users\\kis_b\\source\\repos\\ACMEdraw\\ACMEdraw\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kis_b\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -38,6 +38,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.8, )"
@@ -47,6 +51,14 @@
               "version": "[3.1.8, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.AspNetCore.SpaServices.Extensions": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
               "version": "[3.1.8, )"
             },
