@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACMEdraw", "ACMEdraw\ACMEdraw.csproj", "{D4EA8FE3-69B2-4EFC-A235-E5EC9F3911CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACMEdraw", "ACMEdraw\ACMEdraw.csproj", "{D4EA8FE3-69B2-4EFC-A235-E5EC9F3911CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACMEtests", "ACMEtests\ACMEtests.csproj", "{F14FD12E-9366-4DBA-9F54-F96C92A98B17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D4EA8FE3-69B2-4EFC-A235-E5EC9F3911CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4EA8FE3-69B2-4EFC-A235-E5EC9F3911CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4EA8FE3-69B2-4EFC-A235-E5EC9F3911CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F14FD12E-9366-4DBA-9F54-F96C92A98B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F14FD12E-9366-4DBA-9F54-F96C92A98B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F14FD12E-9366-4DBA-9F54-F96C92A98B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F14FD12E-9366-4DBA-9F54-F96C92A98B17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
