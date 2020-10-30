@@ -17,5 +17,20 @@ namespace ACMEdraw.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+        #region Methods
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Person>().ToTable("People");
+            builder.Entity<Product>().ToTable("Products");
+            builder.Entity<Draw>().ToTable("Draws");
+        }
+        #endregion
+        #region Properties
+        public DbSet<Person> People{ get; set; }
+        public DbSet<Product> Products{ get; set; }
+        public DbSet<Draw> Draws { get; set; }
+
+        #endregion Properties
     }
 }
