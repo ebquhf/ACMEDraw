@@ -23,6 +23,8 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.8" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils" Version="3.1.4" />
 		<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools" />
 		<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" />
 	</ItemGroup>
