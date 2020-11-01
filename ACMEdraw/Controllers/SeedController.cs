@@ -7,6 +7,7 @@ using ACMEdraw.Data;
 using ACMEdraw.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 
@@ -39,7 +40,7 @@ namespace ACMEdraw.Controllers
                 using (var ep = new ExcelPackage(stream))
                 {
                     var ws = ep.Workbook.Worksheets[0];
-                    
+
                     var nProducts = 0;
 
                     #region Import all products
@@ -67,6 +68,42 @@ namespace ACMEdraw.Controllers
                 }
             }
             return new JsonResult(new { Message = $"Products added: {productsList.Count}" });
+        }
+        public async Task<IActionResult> SeedAdmin()
+        {
+            string adminName = "Admin";
+            string adminPW = "AcmeCorp17..";
+            string adminEmail = "admin@acmecorp.com";
+
+            var hasher = new PasswordHasher<ApplicationUser>();
+
+            if (_context.Users.Any(u=>u.UserName==adminName))
+            {
+                return new JsonResult(new
+                {
+                    Message = $"There is already an Admin!"
+                });
+            }
+            else
+            {
+                var user = new ApplicationUser
+                {
+
+                    UserName = adminEmail,
+                    PasswordHash = hasher.HashPassword(null, adminPW),
+                    Email = adminEmail,
+                    EmailConfirmed = true
+                   
+                };
+
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+                return new JsonResult(new
+                {
+                    Message = $"Admin user Is created with email:{adminEmail} and password: {adminPW}, run this service only once!"
+                });
+            }
+           
         }
     }
 }
