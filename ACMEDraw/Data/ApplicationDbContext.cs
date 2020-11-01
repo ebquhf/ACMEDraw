@@ -24,6 +24,8 @@ namespace ACMEdraw.Data
             builder.Entity<Person>().ToTable("People");
             builder.Entity<Product>().ToTable("Products");
             builder.Entity<Draw>().ToTable("Draws");
+
+
         }
         #endregion
         #region Properties
