@@ -1,6 +1,8 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject,ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from './product';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-Products',
   templateUrl: './Products.component.html',
@@ -9,6 +11,8 @@ import { Product } from './product';
 export class ProductsComponent {
   public displayedColumns: string[] = ['id', 'name', 'serialNumber'];
   public products: Product[];
+
+  pageEvent: PageEvent;
   constructor(
     private http: HttpClient,
     @Inject('BASE_URL') private baseUrl: string) {

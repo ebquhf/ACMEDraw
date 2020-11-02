@@ -1,7 +1,7 @@
 <h1>ACME products</h1>
 <p>Here's a list of all product.</p>
 <p *ngIf="!products"><em>Loading...</em></p>
-<table mat-table [dataSource]="products" class="mat-elevation-z8"
+<table mat-table [dataSource]="products" class="mat-elevation-z8" 
        [hidden]="!products">
   <!-- Id Column -->
   <ng-container matColumnDef="id">
@@ -21,3 +21,10 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<mat-paginator #productPaginator [hidden]="!products"
+               [pageSize]="10"
+               [pageSizeOptions]="[10, 20, 50]"
+               (page)="pageEvent = $event"
+               showFirstLastButtons></mat-paginator>
+
