@@ -41,6 +41,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="ClientApp\src\app\angular-material.module.ts" />
 	  <None Remove="ClientApp\src\app\products\product.ts" />
 	  <None Remove="ClientApp\src\app\products\products.component.ts" />
 	</ItemGroup>

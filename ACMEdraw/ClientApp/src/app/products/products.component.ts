@@ -7,6 +7,7 @@ import { Product } from './product';
   styleUrls: ['./Products.component.css']
 })
 export class ProductsComponent {
+  public displayedColumns: string[] = ['id', 'name', 'serialNumber'];
   public products: Product[];
   constructor(
     private http: HttpClient,
