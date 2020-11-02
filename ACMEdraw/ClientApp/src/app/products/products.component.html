@@ -1,0 +1,20 @@
+<h1>ACME products</h1>
+<p>Here's a list of all product.</p>
+<p *ngIf="!products"><em>Loading...</em></p>
+<table class='table table-striped' aria-labelledby="tableLabel"
+       [hidden]="!products">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Serial number</th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.serialNumber }}</td>   
+    </tr>
+  </tbody>
+</table>

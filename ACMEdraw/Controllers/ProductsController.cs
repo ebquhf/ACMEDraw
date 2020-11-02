@@ -30,6 +30,7 @@ namespace ACMEdraw.Controllers
         }
 
         [HttpGet("{id}")]
+        [Route("api/[controller]/GetProductById/{id?}")]
         public async Task<ActionResult<Product>> GetProductById(int id)
         {
             var city = await _context.Products.FindAsync(id);
@@ -41,7 +42,7 @@ namespace ACMEdraw.Controllers
         }
 
         [HttpGet("{guid}")]
-        public async Task<ActionResult<Product>> GetProductById(string guid)
+        public async Task<ActionResult<Product>> GetProductBySerialNumber(string guid)
         {
             var serialNumber = new Guid(guid);
             var city = await _context.Products.FirstOrDefaultAsync(p=>p
