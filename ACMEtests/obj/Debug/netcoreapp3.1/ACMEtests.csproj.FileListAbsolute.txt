@@ -93,3 +93,4 @@ C:\Users\kis_b\source\repos\ACMEdraw\ACMEtests\obj\Debug\netcoreapp3.1\ACMEtests
 C:\Users\kis_b\source\repos\ACMEdraw\ACMEtests\obj\Debug\netcoreapp3.1\ACMEtests.dll
 C:\Users\kis_b\source\repos\ACMEdraw\ACMEtests\obj\Debug\netcoreapp3.1\ACMEtests.pdb
 C:\Users\kis_b\source\repos\ACMEdraw\ACMEtests\obj\Debug\netcoreapp3.1\ACMEtests.genruntimeconfig.cache
+C:\Users\kis_b\source\repos\ACMEdraw\ACMEtests\obj\Debug\netcoreapp3.1\ACMEtests.csprojAssemblyReference.cache
