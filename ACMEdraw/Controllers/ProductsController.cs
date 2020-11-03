@@ -33,25 +33,25 @@ namespace ACMEdraw.Controllers
         [Route("api/[controller]/GetProductById/{id?}")]
         public async Task<ActionResult<Product>> GetProductById(int id)
         {
-            var city = await _context.Products.FindAsync(id);
-            if (city == null)
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
             {
                 return NotFound();
             }
-            return city;
+            return product;
         }
 
         [HttpGet("{guid}")]
         public async Task<ActionResult<Product>> GetProductBySerialNumber(string guid)
         {
             var serialNumber = new Guid(guid);
-            var city = await _context.Products.FirstOrDefaultAsync(p=>p
+            var prduct = await _context.Products.FirstOrDefaultAsync(p=>p
                                     .SerialNumber.ToString().Contains(guid));
-            if (city == null)
+            if (prduct == null)
             {
                 return NotFound();
             }
-            return city;
+            return prduct;
         }
     }
 }
