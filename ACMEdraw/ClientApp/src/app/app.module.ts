@@ -13,6 +13,7 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { ProductsComponent } from './products/products.component';
+import { DrawsComponent } from './draws/draws.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -29,6 +30,7 @@ import { MatNativeDateModule} from '@angular/material/core'
     CounterComponent,
     FetchDataComponent,
     ProductsComponent,
+    DrawsComponent,
     HomeNewDrawComponent
   ],
   imports: [
@@ -41,7 +43,8 @@ import { MatNativeDateModule} from '@angular/material/core'
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'home-draw', component: HomeNewDrawComponent },
-      { path: 'product', component:ProductsComponent}
+      { path: 'product', component: ProductsComponent },
+      { path: 'draw', component: DrawsComponent }
     ]),
     BrowserAnimationsModule,
     AngularMaterialModule,

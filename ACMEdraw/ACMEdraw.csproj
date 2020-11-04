@@ -42,6 +42,8 @@
 
 	<ItemGroup>
 	  <None Remove="ClientApp\src\app\angular-material.module.ts" />
+	  <None Remove="ClientApp\src\app\draws\draw.ts" />
+	  <None Remove="ClientApp\src\app\draws\draws.component.ts" />
 	  <None Remove="ClientApp\src\app\home\Contracts.ts" />
 	  <None Remove="ClientApp\src\app\home\home-new-draw.component.ts" />
 	  <None Remove="ClientApp\src\app\products\product.ts" />
