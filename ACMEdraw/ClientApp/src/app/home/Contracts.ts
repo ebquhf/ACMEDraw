@@ -14,6 +14,9 @@ export interface Draw {
   id: number;
   email: string;
   isWinning: boolean;
+  firstName: string;
+  lastName: string;
+  serialNumber: string;
   person: Person;
   product: Product;
 }

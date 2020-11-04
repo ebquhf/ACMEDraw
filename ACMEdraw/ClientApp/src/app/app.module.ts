@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { HomeNewDrawComponent } from 'src/app/home/home-new-draw.component'
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ProductsComponent, 
+    ProductsComponent,
+    HomeNewDrawComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -36,6 +38,7 @@ import { MatInputModule } from '@angular/material/input';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      { path: 'home/:id', component: HomeNewDrawComponent },
       { path: 'product', component:ProductsComponent}
     ]),
     BrowserAnimationsModule,
