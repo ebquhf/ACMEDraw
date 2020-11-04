@@ -18,6 +18,8 @@ import { AngularMaterialModule } from './angular-material.module';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { HomeNewDrawComponent } from 'src/app/home/home-new-draw.component'
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule} from '@angular/material/core'
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { HomeNewDrawComponent } from 'src/app/home/home-new-draw.component'
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }

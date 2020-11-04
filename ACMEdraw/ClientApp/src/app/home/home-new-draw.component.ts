@@ -1,11 +1,20 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';//import contracts hereimport { Draw, Person,Product } from './Contracts'@Component({
+import { FormGroup, FormControl } from '@angular/forms';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
+//import contracts here
+import { Draw, Person,Product } from './Contracts'
+
+@Component({
   selector: 'app-home-new-draw',
   templateUrl: './home-new-draw.component.html',
   styleUrls: ['./home-new-draw.component.css']
-})export class HomeNewDrawComponent {  // the view title
+})
+export class HomeNewDrawComponent {
+  // the view title
   title: string;
   // the form model
   form: FormGroup;
@@ -14,7 +23,7 @@ import { FormGroup, FormControl } from '@angular/forms';//import contracts her
   draw: Draw;
   id?: number;
   products: Product[];
-
+  tempDateString: string;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -26,6 +35,7 @@ import { FormGroup, FormControl } from '@angular/forms';//import contracts her
       email: new FormControl(''),
       firstName: new FormControl(''),
       lastName: new FormControl(''),
+      birthDate: new FormControl(''),
       serialNumber: new FormControl('')
     });
     this.loadData();
@@ -47,7 +57,7 @@ import { FormGroup, FormControl } from '@angular/forms';//import contracts her
     } else {
       //ADD new draw
       this.title = "Enter the draw to win!"
-
+      this.draw = <Draw>{}
     }
   }
   loadProducts() {
@@ -56,6 +66,12 @@ import { FormGroup, FormControl } from '@angular/forms';//import contracts her
       this.products = result;
     }, error => console.error(error));
   }
+
+  addDate(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.tempDateString= event.value.toUTCString();
+
+  }
+
   onSubmit() {
     var draw = (this.id) ? this.draw : <Draw>{};
     draw.email = this.form.get("email").value;
@@ -63,7 +79,7 @@ import { FormGroup, FormControl } from '@angular/forms';//import contracts her
     draw.firstName = this.form.get("firstName").value;
     draw.lastName = this.form.get("lastName").value;
     draw.serialNumber = this.form.get("serialNumber").value;
-
+    draw.birthDate = this.tempDateString;
    
     if (this.id) {
       var url = this.baseUrl + "api/draws/" + this.draw.id;
@@ -80,10 +96,10 @@ import { FormGroup, FormControl } from '@angular/forms';//import contracts her
         .subscribe(result => {
           console.log("Draw " + draw.id + " has been added.");
           // go back to cities view
-          this.router.navigate(['/home']);
+          this.router.navigate(['']);
         }, error => console.log(error));
     }
 
   }
 }
-
+

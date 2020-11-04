@@ -49,12 +49,25 @@ namespace ACMEdraw.Controllers
             try
             {
                 var newDraw = new Draw { Email = value.Email };
-                var newPerson = new Person {LastName = value.lastName,FirstName = value.firstName };
+                Guid serialNumber = new Guid(value.serialNumber);
 
-                newDraw.Person = newPerson;
-                newDraw.Product = _context.Products.First();
+                var person = await _context.People
+                    .FirstOrDefaultAsync(p => 
+                        p.FirstName == value.firstName && p.LastName == value.lastName);
 
-                await _context.AddAsync(newPerson);
+                var newPerson = new Person {LastName = value.lastName,
+                    FirstName = value.firstName,BirthDate = DateTime.Parse(value.birthDate) };
+
+                newDraw.Person =person!=null?person: newPerson;
+                newDraw.Product = await _context.Products
+                    .FirstAsync(p=>
+                        p.SerialNumber.Equals(serialNumber));
+                
+                if (person==null)
+                {
+                    await _context.AddAsync(newPerson);
+                }
+                
                 await _context.AddAsync(newDraw);
 
                 await _context.SaveChangesAsync();

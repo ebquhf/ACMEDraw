@@ -40,5 +40,6 @@ namespace ACMEdraw.Models
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string serialNumber { get; set; }
+        public string birthDate { get; set; }
     }
 }

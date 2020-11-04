@@ -17,6 +17,7 @@ export interface Draw {
   firstName: string;
   lastName: string;
   serialNumber: string;
+  birthDate: string;
   person: Person;
   product: Product;
 }
