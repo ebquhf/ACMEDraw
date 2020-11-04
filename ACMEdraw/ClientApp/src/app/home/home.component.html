@@ -6,8 +6,11 @@
   <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>
 </ul>
 <p>To help you get started, we've also set up:</p>
-<mat-form-field>
-  <input matInput (keyup)="sendData($event.target.value)"
-         placeholder="Filter by name (or part of it)...">
-</mat-form-field>
+<div class="commands text-right" >
+  <button type="button"
+          [routerLink]="['/home-draw']"
+          class="btn btn-success">
+    Enter the lottery!
+  </button>
+</div>
 <p>The <code>ClientApp</code> subdirectory is a standard Angular CLI application. If you open a command prompt in that directory, you can run any <code>ng</code> command (e.g., <code>ng test</code>), or use <code>npm</code> to install extra packages into it.</p>

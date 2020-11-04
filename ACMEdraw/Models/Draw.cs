@@ -34,4 +34,11 @@ namespace ACMEdraw.Models
         #endregion
 
     }
+    public class DrawContract 
+    {
+        public string Email { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string serialNumber { get; set; }
+    }
 }

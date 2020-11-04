@@ -38,7 +38,7 @@ import { HomeNewDrawComponent } from 'src/app/home/home-new-draw.component'
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-      { path: 'home/:id', component: HomeNewDrawComponent },
+      { path: 'home-draw', component: HomeNewDrawComponent },
       { path: 'product', component:ProductsComponent}
     ]),
     BrowserAnimationsModule,

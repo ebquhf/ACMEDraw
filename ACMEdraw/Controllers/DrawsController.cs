@@ -25,7 +25,7 @@ namespace ACMEdraw.Controllers
         }
         // GET: api/<DrawsController>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Draw>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<Draw>>> GetDraws()
         {
             return await _context.Draws.ToListAsync();
         }
@@ -44,22 +44,31 @@ namespace ACMEdraw.Controllers
 
         // POST api/<DrawsController>
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] Draw value)
+        public async Task<ActionResult> Post([FromBody] DrawContract value)
         {
             try
             {
-                await _context.AddAsync(value);
+                var newDraw = new Draw { Email = value.Email };
+                var newPerson = new Person {LastName = value.lastName,FirstName = value.firstName };
+
+                newDraw.Person = newPerson;
+                newDraw.Product = _context.Products.First();
+
+                await _context.AddAsync(newPerson);
+                await _context.AddAsync(newDraw);
+
                 await _context.SaveChangesAsync();
-                return new ViewResult();
+                return Ok();
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
                 throw ex;
+                
             }
            
         }
-
+        //TODO implement put
         // DELETE api/<DrawsController>/5
         [HttpDelete("{id}")]
         public async void Delete(int id)
