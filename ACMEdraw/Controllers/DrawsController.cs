@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ACMEdraw.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class DrawsController : ControllerBase
     {
@@ -25,9 +25,9 @@ namespace ACMEdraw.Controllers
         }
         // GET: api/<DrawsController>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Draw>>> GetDraws()
+        public  ActionResult<IEnumerable<Draw>> GetDraws()
         {
-            return await _context.Draws.ToListAsync();
+            return  _context.Draws.Include(d=>d.Person).Include(d=>d.Product).ToList();
         }
 
         [HttpGet("{id}")]
@@ -81,7 +81,28 @@ namespace ACMEdraw.Controllers
             }
            
         }
-        //TODO implement put
+
+        public async Task<ActionResult> GetWinner() 
+        {
+            try
+            {
+                var rng = new Random();
+                int winnerIndex = rng.Next(_context.Draws.Count());
+
+                var drawsArray = await _context.Draws.ToArrayAsync();
+                var winner = drawsArray.ElementAt(winnerIndex);
+                winner.isWinning = true;
+                await _context.SaveChangesAsync();
+                return Ok(winner.Email);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+           
+        }
+
         // DELETE api/<DrawsController>/5
         [HttpDelete("{id}")]
         public async void Delete(int id)

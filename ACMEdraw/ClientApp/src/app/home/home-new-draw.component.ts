@@ -82,7 +82,7 @@ export class HomeNewDrawComponent {
     draw.birthDate = this.tempDateString;
    
     if (this.id) {
-      var url = this.baseUrl + "api/draws/" + this.draw.id;
+      var url = this.baseUrl + "api/draws/put/" + this.draw.id;
       this.http
         .put<Draw>(url, draw)
         .subscribe(result => {
@@ -90,7 +90,7 @@ export class HomeNewDrawComponent {
           this.router.navigate(['/home']);
         }, error => console.log(error));
     } else {
-      var url = this.baseUrl + "api/draws"
+      var url = this.baseUrl + "api/draws/post"
       this.http
         .post<Draw>(url, draw)
         .subscribe(result => {

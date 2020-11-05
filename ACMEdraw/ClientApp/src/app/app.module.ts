@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { HomeNewDrawComponent } from 'src/app/home/home-new-draw.component'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule} from '@angular/material/core'
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { MatNativeDateModule} from '@angular/material/core'
     ReactiveFormsModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }

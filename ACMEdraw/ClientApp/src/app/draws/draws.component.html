@@ -1,7 +1,20 @@
 <h1>ACME draws</h1>
-<p>Here's a list of all draw.</p>
-<p>Use these to test the lottery.</p>
-<p *ngIf="!drawSlice"><em>Loading...</em></p>
+<div class="row">
+  <div class="col-sm">
+    <p>Here's a list of all draw.</p>
+    <p>Use these to test the lottery.</p>
+    <p *ngIf="!drawSlice"><em>Loading...</em></p>
+  </div>
+<div class="col-sm">
+  <div class="commands text-right">
+    <button type="button"
+            (click)="onSubmit()"
+            class="btn btn-success">
+      Select a winner!
+    </button>
+  </div>
+</div>
+
 <table mat-table [dataSource]="drawSlice" class="mat-elevation-z8"
        [hidden]="!drawSlice">
   <!-- Id Column -->
@@ -23,6 +36,11 @@
   <ng-container matColumnDef="productName">
     <th mat-header-cell *matHeaderCellDef>Product Name</th>
     <td mat-cell *matCellDef="let draw">{{draw.product.name}}</td>
+  </ng-container>
+  <!-- winner Column -->
+  <ng-container matColumnDef="isWinning">
+    <th mat-header-cell *matHeaderCellDef>Winner</th>
+    <td mat-cell *matCellDef="let draw">{{draw.isWinning}}</td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

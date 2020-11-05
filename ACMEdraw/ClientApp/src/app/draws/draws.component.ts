@@ -9,7 +9,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrls: ['./draws.component.css']
 })
 export class DrawsComponent {
-  public displayedColumns: string[] = ['id', 'firstName', 'lastName','productName'];
+  public displayedColumns: string[] = ['id', 'firstName', 'lastName','productName','isWinning'];
   public draws: Draw[];
   public drawSlice: Draw[];
   pageEvent: PageEvent;
@@ -18,7 +18,7 @@ export class DrawsComponent {
     @Inject('BASE_URL') private baseUrl: string) {
   }
   ngOnInit() {
-    this.http.get<Draw[]>(this.baseUrl + 'api/draws')
+    this.http.get<Draw[]>(this.baseUrl + 'api/draws/getdraws')
       .subscribe(result => {
         this.draws = result;
         this.drawSlice = this.draws.slice(0, 10);
@@ -32,5 +32,13 @@ export class DrawsComponent {
       endIndex = this.draws.length;
     }
     this.drawSlice = this.draws.slice(startIndex, endIndex);
+  }
+  onSubmit() {
+    console.log("Clicked..");
+
+    this.http.get<any>(this.baseUrl + 'api/draws/getwinner')
+      .subscribe(result => {
+        alert(result)
+      }, error => console.error(error));
   }
 }
