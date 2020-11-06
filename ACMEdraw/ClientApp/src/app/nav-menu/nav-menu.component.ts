@@ -11,7 +11,7 @@ import { AuthorizeService } from '../../api-authorization/authorize.service';
 export class NavMenuComponent {
   isExpanded = false;
   public isAuthenticated: Observable<boolean>;
-
+  public isUserLogin: boolean;
   constructor(
     private http: HttpClient,
     private authorizeService: AuthorizeService,
@@ -19,7 +19,11 @@ export class NavMenuComponent {
   }
 
   ngOnInit() {
-    this.isAuthenticated = this.authorizeService.isAuthenticated();
+    this.authorizeService.isAuthenticated().subscribe(val => {
+      this.isUserLogin = val;
+      console.log(val);
+    });
+    console.log(this.isAuthenticated);
 }
   collapse() {
     this.isExpanded = false;
