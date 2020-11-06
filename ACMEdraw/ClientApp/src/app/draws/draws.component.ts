@@ -1,6 +1,7 @@
 import { Component, Inject, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Draw } from './draw';
+import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 @Component({
@@ -9,12 +10,13 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrls: ['./draws.component.css']
 })
 export class DrawsComponent {
-  public displayedColumns: string[] = ['id', 'firstName', 'lastName','productName','isWinning'];
+  public displayedColumns: string[] = ['id', 'firstName', 'lastName', 'productName', 'isWinning'];
   public draws: Draw[];
   public drawSlice: Draw[];
-  pageEvent: PageEvent;
+
   constructor(
     private http: HttpClient,
+    private router: Router,
     @Inject('BASE_URL') private baseUrl: string) {
   }
   ngOnInit() {
@@ -34,11 +36,14 @@ export class DrawsComponent {
     this.drawSlice = this.draws.slice(startIndex, endIndex);
   }
   onSubmit() {
-    console.log("Clicked..");
 
     this.http.get<any>(this.baseUrl + 'api/draws/getwinner')
       .subscribe(result => {
-        alert(result)
+        if (result) {
+          this.router.navigate(['/draw']);
+        }
       }, error => console.error(error));
+
+    this.router.navigate(['']);
   }
 }

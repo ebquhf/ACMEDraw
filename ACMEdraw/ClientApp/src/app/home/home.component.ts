@@ -18,8 +18,7 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.draw.person = this.person;
-    this.draw.product = this.product;
+    
   }
   sendData(event: PageEvent) {
     this.http.post(this.baseUrl + 'api/Draws', JSON.stringify(this.draw)).subscribe(result => {

@@ -25,9 +25,9 @@ namespace ACMEdraw.Controllers
         }
         // GET: api/<DrawsController>
         [HttpGet]
-        public  ActionResult<IEnumerable<Draw>> GetDraws()
+        public ActionResult<IEnumerable<Draw>> GetDraws()
         {
-            return  _context.Draws.Include(d=>d.Person).Include(d=>d.Product).ToList();
+            return _context.Draws.Include(d => d.Person).Include(d => d.Product).ToList();
         }
 
         [HttpGet("{id}")]
@@ -52,22 +52,26 @@ namespace ACMEdraw.Controllers
                 Guid serialNumber = new Guid(value.serialNumber);
 
                 var person = await _context.People
-                    .FirstOrDefaultAsync(p => 
+                    .FirstOrDefaultAsync(p =>
                         p.FirstName == value.firstName && p.LastName == value.lastName);
 
-                var newPerson = new Person {LastName = value.lastName,
-                    FirstName = value.firstName,BirthDate = DateTime.Parse(value.birthDate) };
+                var newPerson = new Person
+                {
+                    LastName = value.lastName,
+                    FirstName = value.firstName,
+                    BirthDate = DateTime.Parse(value.birthDate)
+                };
 
-                newDraw.Person =person!=null?person: newPerson;
+                newDraw.Person = person != null ? person : newPerson;
                 newDraw.Product = await _context.Products
-                    .FirstAsync(p=>
+                    .FirstAsync(p =>
                         p.SerialNumber.Equals(serialNumber));
-                
-                if (person==null)
+
+                if (person == null)
                 {
                     await _context.AddAsync(newPerson);
                 }
-                
+
                 await _context.AddAsync(newDraw);
 
                 await _context.SaveChangesAsync();
@@ -77,30 +81,34 @@ namespace ACMEdraw.Controllers
             {
                 _logger.LogError(ex.Message);
                 throw ex;
-                
+
             }
-           
+
         }
 
-        public async Task<ActionResult> GetWinner() 
+        public async Task<ActionResult> GetWinner()
         {
             try
             {
                 var rng = new Random();
-                int winnerIndex = rng.Next(_context.Draws.Count());
+                var drawsArray = await _context.Draws.Where(d => d.isWinning == false).ToArrayAsync();
+               
+                if (drawsArray.Any())
+                {
+                    int winnerIndex = rng.Next(drawsArray.Count());
 
-                var drawsArray = await _context.Draws.ToArrayAsync();
-                var winner = drawsArray.ElementAt(winnerIndex);
-                winner.isWinning = true;
-                await _context.SaveChangesAsync();
-                return Ok(winner.Email);
+                    var winner = drawsArray.ElementAt(winnerIndex);
+                    winner.isWinning = true;
+                    await _context.SaveChangesAsync();
+                }
+                return Ok();
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-           
+
         }
 
         // DELETE api/<DrawsController>/5
