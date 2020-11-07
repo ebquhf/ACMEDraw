@@ -5,7 +5,9 @@
 - clone the git repo
 - you need to have sqlexpress on your machine or have access to sql server (newer than SQL Server 2012)
 - overwrite appsettings.json ConnectionStrings's "DefaultConnection" property to your own Server, user and password
-- run project
+- build the project
+- Update database from Command line/powershell using  "dotnet ef database update" command
+- run the project
 
 # Things to do on first run
 - sign up with your email and log in
